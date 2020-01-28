@@ -1,5 +1,5 @@
-landing-page
-
+<h3>Landing-page loaded!</h3>
+<h3>Bootstrap test:</h3>
 <div class="row">
   <div class="col-12">test111</div>
   <div class="col-12">test222</div>
@@ -15,20 +15,89 @@ landing-page
   <div class="col-18">test xd</div>
   <div class="col-6">test lol</div>
 </div>
-
-MY FIRST API CALL (in this app...)
-<ng-container *ngIf="responseObj">
-  Prices for: {{responseObj.asset_id_base}}
+<h3>First API call:</h3>
+<ng-container *ngIf="coinAuthServiceAuthResponse">
+  Prices for: {{coinAuthServiceAuthResponse.asset_id_base}}
   <table>
     <tr>
       <th>Time</th>
       <th>Code</th>
       <th>Rate</th>
     </tr>
-    <tr *ngFor="let a of responseObj.rates">
-      <td>{{a.time | date}}</td>
-      <td>{{a.asset_id_quote}}</td>
-      <td>{{a.rate}}</td>
+    <tr *ngFor="let a of coinAuthServiceAuthResponse.rates; let i=index">
+      <ng-container *ngIf="i < 8">
+        <td>{{a.time | date}}</td>
+        <td>{{a.asset_id_quote}}</td>
+        <td>{{a.rate}}</td>
+      </ng-container>
     </tr>
   </table>
 </ng-container>
+<div></div>
+
+<h3>Firebase API calls:</h3>
+
+<div class="m-4 p-3 border">
+  <h4>current user</h4>
+  <div *ngIf="!firebaseService.user">not logged</div>
+  <div *ngIf="firebaseService.user">email: {{firebaseService.user.email}}</div>
+  <div *ngIf="firebaseService.userToken" class="token">token: {{firebaseService.userToken}}</div>
+</div>
+
+<div class="m-4 p-3 border">
+  <h4>logout</h4>
+  <button (click)="onLogoutClick()">logout</button>
+</div>
+
+<div class="m-4 p-3 border">
+  <h4>sign up</h4>
+  <form [formGroup]="signUpFormGroup" role="form">
+
+    <!-- Email -->
+    <input formControlName="email" placeholder="Email" type="email">
+
+    <!-- Password -->
+    <input formControlName="password" placeholder="Password" type="password">
+
+    <!-- Confirm Password -->
+    <input formControlName="confirmPassword" placeholder="Confirm password" type="password">
+
+    <!-- Submit button -->
+    <button (click)="onUserSignUpClick()" class="mx-3">sign up</button>
+
+    <span *ngIf="signUpFormGroupError && !isUserSignedUp">
+      {{signUpFormGroupError}}
+    </span>
+
+    <span *ngIf="isUserSignedUp">
+      success!
+    </span>
+  </form>
+
+</div>
+
+<div class="m-4 p-3 border">
+  <h4>log in</h4>
+  <form [formGroup]="signInFormGroup" role="form">
+
+    <!-- Email -->
+    <input formControlName="email" placeholder="Email" type="email">
+
+    <!-- Password -->
+    <input formControlName="password" placeholder="Password" type="password">
+
+    <!-- Submit button -->
+    <button (click)="onUserSignInClick()" class="mx-3">sign in</button>
+
+    <span *ngIf="signInFormGroupError && !isUserSignedIn">
+      {{signInFormGroupError}}
+    </span>
+
+    <span *ngIf="isUserSignedIn">
+      success!
+    </span>
+  </form>
+
+</div>
+
+

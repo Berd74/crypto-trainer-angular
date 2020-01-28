@@ -6,7 +6,7 @@ import {environment} from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class CoinAuthService {
 
   private readonly url = environment.coinApiUrl + 'v1/exchangerate/BTC';
   private readonly httpOptions = {
