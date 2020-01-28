@@ -1,0 +1,34 @@
+landing-page
+
+<div class="row">
+  <div class="col-12">test111</div>
+  <div class="col-12">test222</div>
+</div>
+
+<div class="row">
+  <div class="col-6">ha ha test 123</div>
+  <div class="col-12">ha ha test 321</div>
+</div>
+
+
+<div class="row">
+  <div class="col-18">test xd</div>
+  <div class="col-6">test lol</div>
+</div>
+
+MY FIRST API CALL (in this app...)
+<ng-container *ngIf="responseObj">
+  Prices for: {{responseObj.asset_id_base}}
+  <table>
+    <tr>
+      <th>Time</th>
+      <th>Code</th>
+      <th>Rate</th>
+    </tr>
+    <tr *ngFor="let a of responseObj.rates">
+      <td>{{a.time | date}}</td>
+      <td>{{a.asset_id_quote}}</td>
+      <td>{{a.rate}}</td>
+    </tr>
+  </table>
+</ng-container>

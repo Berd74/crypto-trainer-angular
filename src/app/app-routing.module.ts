@@ -1,8 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LandingPageComponent} from './landing-lazy-module/landing-page/landing-page.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'landing_page', component: LandingPageComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
