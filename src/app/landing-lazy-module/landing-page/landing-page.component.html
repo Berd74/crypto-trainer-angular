@@ -24,12 +24,10 @@
       <th>Code</th>
       <th>Rate</th>
     </tr>
-    <tr *ngFor="let a of coinAuthServiceAuthResponse.rates; let i=index">
-      <ng-container *ngIf="i < 8">
-        <td>{{a.time | date}}</td>
-        <td>{{a.asset_id_quote}}</td>
-        <td>{{a.rate}}</td>
-      </ng-container>
+    <tr *ngFor="let a of (coinAuthServiceAuthResponse.rates).slice(0, 10); let i=index">
+      <td>{{a.time | date}}</td>
+      <td>{{a.asset_id_quote}}</td>
+      <td>{{a.rate}}</td>
     </tr>
   </table>
 </ng-container>
