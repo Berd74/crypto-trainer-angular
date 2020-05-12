@@ -6,13 +6,14 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 export const LANDING_ROUTES: Routes = [
   {
     path: '', component: LandingCoreComponent, children: [
-      {path: 'landing_page', component: LandingPageComponent},
+      {path: 'login', component: LandingPageComponent}
+      // {path: 'sign-up', component: LandingPageComponent},
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(LANDING_ROUTES)],
+  imports: [RouterModule.forChild(LANDING_ROUTES)],
   exports: [RouterModule]
 })
 export class LandingRoutingModule {

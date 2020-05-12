@@ -3,16 +3,18 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {mapTo, mergeMap, tap} from 'rxjs/operators';
 import {from, Observable, of} from 'rxjs';
+import {LandingProvidersModule} from '../landing-providers.module';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: LandingProvidersModule
 })
 export class FirebaseService {
   public user: User;
   public userToken: string;
 
   constructor(public afAuth: AngularFireAuth) {
+    logtri('FirebaseService');
     this.userStateListener().subscribe({
       next: () => {
       }
@@ -34,7 +36,7 @@ export class FirebaseService {
   public userStateListener(): Observable<User> {
     return this.afAuth.authState.pipe(
       tap(user => {
-        console.log('%cUserStateListener Triggered! ', 'color: #00ffff');
+        logtri('userStateListener function');
         this.user = user;
       }),
       mergeMap(user => this.refreshToken().pipe(mapTo(user)) as Observable<User>),

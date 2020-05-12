@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CryptoTrainer": {
+    "cryptotrainer": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/CryptoTrainer",
+            "outputPath": "dist/cryptotrainer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -30,7 +30,10 @@
             "styles": [
               "src/app/shared-global/styles/main.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js",
+              "src/app/services/logger.service.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -66,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "CryptoTrainer:build"
+            "browserTarget": "cryptotrainer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "CryptoTrainer:build:production"
+              "browserTarget": "cryptotrainer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CryptoTrainer:build"
+            "browserTarget": "cryptotrainer:build"
           }
         },
         "test": {
@@ -114,15 +117,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "CryptoTrainer:serve"
+            "devServerTarget": "cryptotrainer:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "CryptoTrainer:serve:production"
+              "devServerTarget": "cryptotrainer:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "CryptoTrainer"
+  "defaultProject": "cryptotrainer"
 }

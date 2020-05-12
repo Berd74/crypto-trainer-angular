@@ -1,19 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-auth-layout',
   templateUrl: './landing-core.component.html',
   styleUrls: ['./landing-core.component.scss']
 })
-export class LandingCoreComponent implements OnInit, OnDestroy {
+export class LandingCoreComponent {
 
   constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
+    logtri('LandingCoreComponent');
   }
 
 }
