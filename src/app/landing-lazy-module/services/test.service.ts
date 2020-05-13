@@ -1,11 +1,17 @@
 import {Injectable} from '@angular/core';
 import {ConnectableObservable, interval, Observable, Subject} from 'rxjs';
 import {multicast, publish, refCount, tap} from 'rxjs/operators';
+import {LandingProvidersModule} from '../landing-providers.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: LandingProvidersModule
 })
 export class TestService {
+
+  constructor() {
+    logtri('TestService');
+  }
+
 
   main() {
     this.test2();

@@ -1,10 +1,11 @@
 import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {CoinAuthService} from '../../shared-global/services-module/coinapi/coin-auth.service';
-import {FirebaseService} from '../services/firebase.service';
+import {FirebaseAuthService} from '../../services/firebase.service';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {fromEvent, timer} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {TestService} from '../services/test.service';
+import {CoinAuthService} from '../../shared/services/coinapi/coin-auth.service';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   templateUrl: './landing-page.component.html',
@@ -39,11 +40,40 @@ export class LandingPageComponent implements OnInit {
   private mousedown: boolean;
 
   constructor(private coinAuthService: CoinAuthService,
-              public firebaseService: FirebaseService,
+              public firebaseAuthService: FirebaseAuthService,
               private formBuilder: FormBuilder,
-              private testService: TestService) {
+              private testService: TestService,
+              public angularFireDatabase: AngularFireDatabase
+  ) {
+
+    logtri('LandingPageComponent');
 
     this.testService.main();
+
+    console.log(this.angularFireDatabase.database);
+
+    this.firebaseAuthService.userStateListener().subscribe((user) => {
+      console.log(user.uid);
+      console.log();
+
+      this.angularFireDatabase.database.ref('users/' + user.uid).set({
+        email: user.email
+      });
+    });
+
+
+    timer(2000).subscribe({
+      next: () => {
+
+
+        this.angularFireDatabase.database.ref('/users').once('value').then((snapshot) => {
+          const data = snapshot.val();
+          console.log(data);
+        });
+
+      }
+    });
+
 
     this.coinAuthService.auth().subscribe({
       next: value => {
@@ -173,20 +203,20 @@ export class LandingPageComponent implements OnInit {
   }
 
   public onLogoutClick() {
-    this.firebaseService.logout().then(() => {
+    this.firebaseAuthService.logout().then(() => {
       // nothing
     });
   }
 
   public onUserSignInClick() {
     if (this.signInFormGroup.valid) {
-      this.firebaseService.login(
+      this.firebaseAuthService.login(
         this.signInFormGroup.value.email,
         this.signInFormGroup.value.password
-      ).then((val) => {
+      ).subscribe((val) => {
         this.isUserSignedIn = true;
         this.signInFormGroupError = null;
-      }).catch((err) => {
+      }, (err) => {
         this.isUserSignedIn = false;
         this.signInFormGroupError = err;
       });
@@ -198,7 +228,7 @@ export class LandingPageComponent implements OnInit {
   public onUserSignUpClick() {
 
     if (this.signUpFormGroup.valid) {
-      this.firebaseService.signUp(
+      this.firebaseAuthService.signUp(
         this.signUpFormGroup.value.email,
         this.signUpFormGroup.value.password
       ).subscribe({

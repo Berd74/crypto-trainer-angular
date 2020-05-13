@@ -1,0 +1,15 @@
+@import '../variables';
+
+.btn-primary {
+  &:hover, &:focus, &:active, &:focus:hover, &:focus:active {
+    background-color: lighten($primary, 6%);
+    border-color: lighten($primary, 6%);
+  }
+}
+
+.btn-secondary {
+  &:hover, &:focus, &:active, &:focus:hover, &:focus:active {
+    background-color: lighten($secondary, 6%);
+    border-color: lighten($secondary, 6%);
+  }
+}

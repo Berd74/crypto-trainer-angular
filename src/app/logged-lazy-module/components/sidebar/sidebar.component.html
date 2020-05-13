@@ -1,0 +1,49 @@
+<div (click)="onMenuBtnClick()" class="btn btn-default btn-menu d-md-none">
+  <i class="fas fa-bars"></i>
+</div>
+
+<nav [ngClass]="{'d-none': isCollapsed, 'd-block': !isCollapsed}" class="navbar navbar-horizontal d-md-none">
+  <ul class="navbar-nav">
+    <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+      <a [routerLink]="[menuItem.path]" class="nav-link" routerLinkActive="active">
+        <i class="ni {{menuItem.icon}}"></i>
+        <div class="text">{{menuItem.title}}</div>
+      </a>
+    </li>
+  </ul>
+  <hr class="my-3">
+  <ul class="navbar-nav">
+    <li class="">
+      <a (click)="firebaseAuthService.logout()" class="nav-link">
+        <i class="ni ni-button-power"></i>
+        <div class="text">Logout</div>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<nav class="navbar navbar-vertical d-none d-md-block">
+  <div class="navbar-logo">
+    <img [src]="'assets/CryptoTrainerLogoWhite.png'" alt="CryptoTrainer">
+  </div>
+  <hr class="my-3">
+
+  <ul class="navbar-nav">
+    <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+      <a [routerLink]="[menuItem.path]" class="nav-link" routerLinkActive="active">
+        <i class="ni {{menuItem.icon}}"></i>
+        <div class="text">{{menuItem.title}}</div>
+      </a>
+    </li>
+  </ul>
+  <hr class="my-3">
+  <ul class="navbar-nav">
+    <li class="">
+      <a (click)="firebaseAuthService.logout()" class="nav-link">
+        <i class="fas fa-sign-out-alt"></i>
+        <div class="text">Logout</div>
+      </a>
+    </li>
+  </ul>
+</nav>

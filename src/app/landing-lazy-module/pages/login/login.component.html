@@ -1,0 +1,97 @@
+<div class="container d-flex flex-column min-vh-100 position-relative">
+
+  <header class="d-flex align-items-end justify-content-center">
+    <h1 class="mb-3">CryptoTrainer</h1>
+  </header>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+
+    <div class="card card400 my-6">
+
+      <div class="card-body px-5 py-4">
+
+        <div class="row">
+          <!--              <div class=" col-md-11">-->
+          <!--                We are an image and video compression technology company specializing in high-quality,-->
+          <!--                low-bandwidth solutions. We dramatically reduce costs for storage and transmission while-->
+          <!--                enhancing the consumer experience.-->
+          <!--                <hr>-->
+          <!--                <span class="font-weight-bold">CryptoTrainer</span> is an apllication that allows you to manage massa, diam pretium nulla fames-->
+          <!--                maecenas. Nulla orci-->
+          <!--                sit mattis mattis dui turpis.-->
+          <!--              </div>-->
+
+          <div class="col-md-24 mt-7">
+            <div class="d-flex flex-column align-items-stretch justify-content-between height100">
+
+              <h4 class="text-center mb-4">
+                Login to CryptoTrainer
+              </h4>
+
+              <form *ngIf="presetSettingsForm" [formGroup]="presetSettingsForm" role="form">
+
+                <!-- Email -->
+                <div class="form-group mt-4">
+                  <label for="password">E-mail</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-envelope"></i></span>
+                    </div>
+                    <input autofocus class="form-control" formControlName="email" required type="email">
+                  </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group mt-4">
+                  <label for="password">Password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="password" id="password" required type="password">
+                  </div>
+                </div>
+
+                <!-- Error -->
+                <div
+                    *ngIf="showValidationResults && ((presetSettingsForm.controls?.password.errors || presetSettingsForm.controls?.email.errors) || loginFailed)"
+                    class="errorText text-center">
+                  Your email or password is incorrect.
+                </div>
+
+                <!-- Submit button -->
+                <div class="text-center mt-5 mb-4">
+                  <button (click)="handleClickLogin()" class="btn btn-lg btn-primary" type="submit">
+                    Login
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-footer row no-gutters text-center align-items-center">
+
+        <p class="col m-0">Don't have an account?</p>
+        <div class="col-auto">
+          <button [routerLink]="'/sign-up'" class="btn btn-secondary" type="button">Sign up</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="px-md-4 px-2 text-center text-muted">
+    &copy; 2020 CryptoTrainer
+  </footer>
+
+
+</div>
+
+
+

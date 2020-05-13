@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  coinApiUrl: 'https://rest.coinapi.io/',
-  // coinApiUrl: 'https://rest-sandbox.coinapi.io/',
+  // coinApiUrl: 'https://rest.coinapi.io/',
+  coinApiUrl: 'https://rest-sandbox.coinapi.io/',
   coinApiKey: '56CFC19E-C225-4CEA-BF85-6A80E0196A3B'
 };
 

@@ -1,0 +1,116 @@
+<div class="container d-flex flex-column min-vh-100 position-relative">
+
+  <header class="d-flex align-items-end justify-content-center">
+    <h1 class="mb-3">CryptoTrainer</h1>
+  </header>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+
+    <div class="card card400 my-6">
+
+      <div class="card-body px-5 py-4">
+
+        <div class="row">
+          <!--              <div class=" col-md-11">-->
+          <!--                We are an image and video compression technology company specializing in high-quality,-->
+          <!--                low-bandwidth solutions. We dramatically reduce costs for storage and transmission while-->
+          <!--                enhancing the consumer experience.-->
+          <!--                <hr>-->
+          <!--                <span class="font-weight-bold">CryptoTrainer</span> is an apllication that allows you to manage massa, diam pretium nulla fames-->
+          <!--                maecenas. Nulla orci-->
+          <!--                sit mattis mattis dui turpis.-->
+          <!--              </div>-->
+
+          <div class="col-md-24 mt-7">
+            <div class="d-flex flex-column align-items-stretch justify-content-between height100">
+
+              <h4 class="text-center mb-4">
+                Create new account
+              </h4>
+
+              <form *ngIf="presetSettingsForm" [formGroup]="presetSettingsForm" class="position-relative" role="form">
+
+                <!-- Email -->
+                <div class="form-group mt-3">
+                  <label for="email">E-mail</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-envelope"></i></span>
+                    </div>
+                    <input (input)="emailInUseError = null" class="form-control" formControlName="email" id="email" type="email">
+                  </div>
+                </div>
+                <div *ngIf="buttonClicked && presetSettingsForm.controls?.email.errors" class="errorText">
+                  Invalid email format.
+                </div>
+
+                <!-- Password -->
+                <div class="form-group mt-3">
+                  <label for="password">Password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="password" id="password" type="password">
+                  </div>
+                </div>
+                <div *ngIf="buttonClicked && presetSettingsForm.controls?.password.errors" class="errorText">
+                  Your password must be between 6-32 characters.
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group mt-3">
+                  <label for="confirmPassword">Confirm password</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="confirmPassword" id="confirmPassword" type="password">
+                  </div>
+                </div>
+                <div *ngIf="buttonClicked && presetSettingsForm.errors?.notMatch" class="errorText">
+                  Passwords doesn't match.
+                </div>
+
+                <!-- Submit button -->
+                <div class="text-center mt-5 mb-4">
+                  <button (click)="handleClickCreateAccount()" class="btn btn-lg btn-primary" type="submit">
+                    Create account
+                  </button>
+                </div>
+
+                <div *ngIf="emailInUseError" class="errotText errorCenter">
+                  {{emailInUseError}}
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-footer row no-gutters text-center align-items-center">
+
+        <p class="col m-0">Have already an account?</p>
+        <div class="col-auto">
+          <button [routerLink]="'/login'" class="btn btn-secondary" type="button">Login</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="px-md-4 px-2 text-center text-muted">
+    &copy; 2020 CryptoTrainer
+  </footer>
+
+
+</div>
+
+
+

@@ -1,0 +1,12 @@
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 17.5rem;
+    padding: 0 3.75rem;
+  }
+}
+
+.main-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

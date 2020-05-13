@@ -1,0 +1,72 @@
+//
+// bootstrap
+//
+
+//basic colors
+$red: #dc3545;
+$orange: #fd7e14;
+$green: #28a745;
+$cyan: #17a2b8;
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+//colors
+$primary: #f5bb5a;
+$primary-bg: #002020;
+$secondary: desaturate(lighten($primary-bg, 20%), 80%);
+$success: $green;
+$info: $cyan;
+$warning: $orange;
+$danger: $red;
+
+//body
+$body-color: $white;
+$body-bg: $primary-bg;
+
+//card
+$card-bg: desaturate(lighten($primary-bg, 10%), 50%);
+$card-cap-bg: darken($card-bg, 4%);
+
+//border
+$border-radius: .5rem;
+$border-radius-lg: .55rem;
+$border-radius-sm: .45rem;
+$border-color: darken($card-cap-bg, 4%);
+$card-border-color: $border-color;
+
+
+//hr
+$hr-border-width: 1px;
+$hr-border-color: $border-color;
+
+//typings
+$headings-color: $primary;
+$text-muted: transparentize($white, 0.5);
+$link-color: $primary;
+$link-hover-color: lighten($primary, 5%);
+
+//inputs
+$input-bg: $card-cap-bg;
+$input-group-addon-bg: $card-cap-bg;
+$input-group-addon-color: $text-muted;
+$input-border-color: $card-border-color;
+$input-color: $white;
+$input-focus-border-color: $primary;
+$input-border-radius: 0;
+
+
+//grid
+$grid-columns: 24;
+
+//
+// my
+//

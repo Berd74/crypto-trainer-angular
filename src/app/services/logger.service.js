@@ -13,6 +13,6 @@ function logtri(name) {
 	} else if (name.includes('Service')) {
 		console.log('%c' + name + ' Triggered! ', 'color: #bb8800');
 	} else {
-		console.log('%c' + name + ' Triggered! ', 'color: #777777');
+		console.log('%c' + name + ' Triggered! ', 'color: #779977');
 	}
 }

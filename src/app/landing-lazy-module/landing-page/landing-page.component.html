@@ -37,9 +37,9 @@
 
 <div class="m-4 p-3 border">
   <h4>current user</h4>
-  <div *ngIf="!firebaseService.user">not logged</div>
-  <div *ngIf="firebaseService.user">email: {{firebaseService.user.email}}</div>
-  <div *ngIf="firebaseService.userToken" class="token">token: {{firebaseService.userToken}}</div>
+  <div *ngIf="!firebaseAuthService.user">not logged</div>
+  <div *ngIf="firebaseAuthService.user">email: {{firebaseAuthService.user.email}}</div>
+  <div *ngIf="firebaseAuthService.userToken" class="token">token: {{firebaseAuthService.userToken}}</div>
 </div>
 
 <div class="m-4 p-3 border">
@@ -52,13 +52,13 @@
   <form [formGroup]="signUpFormGroup" role="form">
 
     <!-- Email -->
-    <input formControlName="email" placeholder="Email" type="email">
+    <input autocomplete="email" formControlName="email" placeholder="Email" type="email">
 
     <!-- Password -->
-    <input formControlName="password" placeholder="Password" type="password">
+    <input autocomplete="password" formControlName="password" placeholder="Password" type="password">
 
     <!-- Confirm Password -->
-    <input formControlName="confirmPassword" placeholder="Confirm password" type="password">
+    <input autocomplete="password" formControlName="confirmPassword" placeholder="Confirm password" type="password">
 
     <!-- Submit button -->
     <button (click)="onUserSignUpClick()" class="mx-3">sign up</button>
@@ -79,10 +79,10 @@
   <form [formGroup]="signInFormGroup" role="form">
 
     <!-- Email -->
-    <input formControlName="email" placeholder="Email" type="email">
+    <input autocomplete="email" formControlName="email" placeholder="Email" type="email">
 
     <!-- Password -->
-    <input formControlName="password" placeholder="Password" type="password">
+    <input autocomplete="password" formControlName="password" placeholder="Password" type="password">
 
     <!-- Submit button -->
     <button (click)="onUserSignInClick()" class="mx-3">sign in</button>

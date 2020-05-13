@@ -36,16 +36,17 @@ export function isLoggedModulePath(urlSegments: UrlSegment[]) {
     return allowedPaths.includes(urlSegment.path);
   });
 
-  const posParams = {};
+  const posParamsObj = {};
   urlSegments.forEach(urlSegment => {
-    posParams[urlSegment.path] = urlSegment;
+    posParamsObj[urlSegment.path] = urlSegment;
   });
-  return isDashboard ? {consumed: [], posParams: posParams} : null;
+  return isDashboard ? {consumed: [], posParams: posParamsObj} : null;
 }
 
 export function isLandingModulePath(urlSegments: UrlSegment[]): UrlMatchResult {
 
   const allowedPaths = [
+    'landing',
     'login',
     'sign-up'
   ];
@@ -54,10 +55,10 @@ export function isLandingModulePath(urlSegments: UrlSegment[]): UrlMatchResult {
     return allowedPaths.includes(urlSegment.path);
   });
 
-  const posParams = {};
+  const posParamsObj = {};
 
   urlSegments.forEach(urlSegment => {
-    posParams[urlSegment.path] = urlSegment;
+    posParamsObj[urlSegment.path] = urlSegment;
   });
-  return isLogin ? {consumed: [], posParams: posParams} : null;
+  return isLogin ? {consumed: [], posParams: posParamsObj} : null;
 }

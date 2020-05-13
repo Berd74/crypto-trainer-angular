@@ -4,6 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
 
@@ -15,7 +16,9 @@ import {HttpClientModule} from '@angular/common/http';
     // Other
     HttpClientModule,
     // To make router works
-    BrowserModule
+    BrowserModule,
+    // My global shared module (for example it adds default component - no need to declare it below)
+    SharedModule
   ],
   declarations: [
     // App Components
