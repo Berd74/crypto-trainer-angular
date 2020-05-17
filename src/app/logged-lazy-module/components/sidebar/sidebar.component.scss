@@ -72,7 +72,7 @@
     }
 
     &:hover {
-      background-color: transparentize($white, 0.94);
+      background-color: $hover-bg;
     }
   }
 }

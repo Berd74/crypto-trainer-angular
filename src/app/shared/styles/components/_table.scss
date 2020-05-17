@@ -1,0 +1,5 @@
+@import '../variables';
+
+thead > tr {
+  border-bottom: 1px solid $table-border-color;
+}

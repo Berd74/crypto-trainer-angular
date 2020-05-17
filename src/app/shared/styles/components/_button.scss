@@ -2,14 +2,14 @@
 
 .btn-primary {
   &:hover, &:focus, &:active, &:focus:hover, &:focus:active {
-    background-color: lighten($primary, 6%);
-    border-color: lighten($primary, 6%);
+    background-color: lighten($primary, 6%) !important;
+    border-color: lighten($primary, 6%) !important;
   }
 }
 
 .btn-secondary {
   &:hover, &:focus, &:active, &:focus:hover, &:focus:active {
-    background-color: lighten($secondary, 6%);
-    border-color: lighten($secondary, 6%);
+    background-color: lighten($secondary, 6%) !important;
+    border-color: lighten($secondary, 6%) !important;
   }
 }

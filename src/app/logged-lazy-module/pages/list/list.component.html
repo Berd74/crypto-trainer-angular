@@ -1,0 +1,82 @@
+<div class="container mt-5">
+
+  <!--  <div class="clearfix mt-6 gutter-add">-->
+  <!--    <button class="btn btn-primary float-right" type="button"-->
+  <!--            (click)="onCreateNewJobClick()" [ngClass]="{'disabled': !(storageSpaceModel.getIsSpace() | async)}">-->
+  <!--      <span class="btn-inner&#45;&#45;text">Create new job</span>-->
+  <!--    </button>-->
+  <!--  </div>-->
+
+  <div class="card" *ngIf="loading">
+
+    <div class="card-body text-center d-flex flex-column align-items-center">
+      <img class="loading" [src]="'assets/loading.svg'" alt="loading...">
+      <span>loading ({{currentCoin}} from {{max}})</span>
+    </div>
+
+  </div>
+
+  <div class="card" *ngIf="!loading">
+
+    <div class="card-body">
+
+      <form>
+        <div class="form-group form-inline">
+          Search by name/symbol: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+        </div>
+      </form>
+
+      <table class="table table-striped mb-0">
+        <thead>
+        <tr>
+          <th scope="col" width="1">#</th>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col" width="1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let coin of coins">
+          <td>{{ coin.id + 1}}</td>
+          <td>
+            <img [src]="coin.thumb" class="mr-2" style="width: 20px">
+            {{ coin.symbol }}
+          </td>
+          <td>{{ coin.name}}</td>
+          <td>{{ coin.price | float}}</td>
+          <td>
+            <div class="d-flex">
+              <button class="btn btn-sm btn-secondary mr-2" (click)="onBuyClick(coin.coinId, coin.name, coin.price, coin.symbol)">
+                <i class="fas fa-shopping-basket"></i>
+              </button>
+              <button class="btn btn-sm btn-secondary" [routerLink]="'/coin-details/' + coin.coinId">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="card-footer">
+      <div class="d-flex justify-content-between p-2 flex-wrap">
+        <ngb-pagination [collectionSize]="_coins.length" [(page)]="page" [pageSize]="pageSize">
+        </ngb-pagination>
+
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+          <option [ngValue]="20">20 items per page</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+

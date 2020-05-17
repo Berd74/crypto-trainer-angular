@@ -29,7 +29,10 @@ export class AppRoutingModule {
 
 export function isLoggedModulePath(urlSegments: UrlSegment[]) {
   const allowedPaths = [
-    'home'
+    'history',
+    'list',
+    'coin-details',
+    'home',
   ];
 
   const isDashboard = urlSegments.find(urlSegment => {
@@ -48,7 +51,7 @@ export function isLandingModulePath(urlSegments: UrlSegment[]): UrlMatchResult {
   const allowedPaths = [
     'landing',
     'login',
-    'sign-up'
+    'sign-up',
   ];
 
   const isLogin = urlSegments.find(urlSegment => {

@@ -3,9 +3,9 @@
 //
 
 //basic colors
-$red: #dc3545;
+$red: #f94455;
 $orange: #fd7e14;
-$green: #28a745;
+$green: #6fe28a;
 $cyan: #17a2b8;
 $white: #fff;
 $gray-100: #f8f9fa;
@@ -31,6 +31,7 @@ $danger: $red;
 //body
 $body-color: $white;
 $body-bg: $primary-bg;
+$hover-bg: transparentize($white, 0.94);
 
 //card
 $card-bg: desaturate(lighten($primary-bg, 10%), 50%);
@@ -42,7 +43,6 @@ $border-radius-lg: .55rem;
 $border-radius-sm: .45rem;
 $border-color: darken($card-cap-bg, 4%);
 $card-border-color: $border-color;
-
 
 //hr
 $hr-border-width: 1px;
@@ -63,6 +63,30 @@ $input-color: $white;
 $input-focus-border-color: $primary;
 $input-border-radius: 0;
 
+//select
+$custom-select-bg: $secondary;
+$custom-select-background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23fff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+$custom-select-border-color: $secondary;
+
+//pagination
+$pagination-bg: $secondary;
+$pagination-hover-bg: lighten($secondary, 6%);
+$pagination-border-color: $secondary;
+$pagination-disabled-bg: desaturate($card-bg, 15%);
+$pagination-color: $body-color;
+$pagination-disabled-color: $text-muted;
+$pagination-disabled-border-color: desaturate($card-bg, 15%);
+$pagination-active-border-color: $primary;
+$pagination-hover-border-color: lighten($secondary, 6%);
+
+//table
+$table-border-width: 0;
+$table-bg: saturate(lighten($card-bg, 3%), 2%);
+$table-accent-bg: $card-bg;
+$table-border-color: $border-color;
+
+//modal
+$modal-content-bg: $card-bg;
 
 //grid
 $grid-columns: 24;

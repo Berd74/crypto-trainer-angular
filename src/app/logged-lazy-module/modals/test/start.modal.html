@@ -1,0 +1,40 @@
+<div class="clickPrevent"></div>
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <!--  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">-->
+  <!--    <i class="fas fa-times"></i>-->
+  <!--  </button>-->
+</div>
+<div class="modal-body">
+
+  <p>
+    To start your adventure with the CryptoTrainer, enter the amount of money with which you want to start investing. The amount must be between 100 and 100,000.
+  </p>
+
+  <form *ngIf="formGroup" [formGroup]="formGroup" role="form">
+
+    <div class="form-group mt-4">
+      <label for="cash">Money to start</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-money-bill-wave"></i>
+          </span>
+        </div>
+        <input id="cash" autofocus class="form-control" formControlName="cash" required type="text">
+      </div>
+    </div>
+
+    <div
+      *ngIf="error"
+      class="errorText text-center">
+      {{error}}
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <!--  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>-->
+  <button type="button" class="btn btn-primary" (click)="onOkClick()">Ok</button>
+</div>

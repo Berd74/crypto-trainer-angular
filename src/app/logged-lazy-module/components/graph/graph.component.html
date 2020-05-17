@@ -1,14 +1,17 @@
-<div class="px-4 row no-gutters" style="background-color: white">
-  <h1 class="col-auto">S&P 500</h1>
+<div *ngIf="title" class="row no-gutters" style="margin: 0 60px">
+  <h4 class="col-auto">{{title}}</h4>
 </div>
-<div class="px-4 row no-gutters" style="background-color: white">
-  <div *ngIf="!grow" class="col-auto">price: {{price}}</div>
-  <div *ngIf="!grow" class="col-auto pl-4">in: {{target}}%</div>
+<div class=" row no-gutters"  style="margin: 0 60px">
+  <div *ngIf="!grow" class="col-24">price: {{price | float}} USD</div>
+  <div *ngIf="!grow" class="col-24">date: {{target}}</div>
 
-  <div *ngIf="grow" class="col-auto">grow: {{grow}}</div>
-  <div *ngIf="grow" class="col-auto pl-4">increase: {{increase}}%</div>
+  <div *ngIf="grow" class="col-12" [ngClass]="{'green': grow>=0, 'red': grow<0}">grow: {{grow | float}} USD</div>
+  <div *ngIf="grow" class="col-12 text-right">date to: {{target}}</div>
+  <div *ngIf="grow" class="col-12" [ngClass]="{'green': grow>=0, 'red': grow<0}">increase: {{increase | float}}%</div>
+  <div *ngIf="grow" class="col-12 text-right">date from: {{targetPrev}}</div>
+
 </div>
-<div class="px-4 pb-4" style="background-color: white">
+<div style="margin-right: 60px" >
   <div #googleChart></div>
 </div>
 

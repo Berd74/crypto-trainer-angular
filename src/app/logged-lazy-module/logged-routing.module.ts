@@ -2,11 +2,17 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoggedCoreComponent} from './logged-core.component';
 import {HomeComponent} from './pages/home/home.component';
+import {ListComponent} from './pages/list/list.component';
+import {HistoryComponent} from './pages/history/history.component';
+import {CoinDetailsComponent} from './pages/coin-details/coin-details.component';
 
 export const LOGGED_ROUTES: Routes = [
   {
     path: '', component: LoggedCoreComponent, children: [
-      {path: 'home', component: HomeComponent}
+      {path: 'home', component: HomeComponent},
+      {path: 'list', component: ListComponent},
+      {path: 'history', component: HistoryComponent},
+      {path: 'coin-details/:id', component: CoinDetailsComponent},
     ]
   }
 ];

@@ -52,6 +52,7 @@ export class LandingPageComponent implements OnInit {
 
     console.log(this.angularFireDatabase.database);
 
+    this.firebaseAuthService.user.uid
     this.firebaseAuthService.userStateListener().subscribe((user) => {
       console.log(user.uid);
       console.log();

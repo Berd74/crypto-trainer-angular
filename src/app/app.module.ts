@@ -18,7 +18,7 @@ import {SharedModule} from './shared/shared.module';
     // To make router works
     BrowserModule,
     // My global shared module (for example it adds default component - no need to declare it below)
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     // App Components

@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {fromEvent, timer} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 
@@ -9,7 +9,175 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class GraphComponent implements OnInit {
 
-  public data = [
+  public dataTest = [
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', -1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
+    ['2004', 1000],
+    ['2005', 1200],
+    ['2006', 1500],
+    ['2007', 2000],
+    ['2008', 4000],
+    ['2009', 1000],
     ['2004', 1000],
     ['2005', 1200],
     ['2006', 1500],
@@ -19,8 +187,13 @@ export class GraphComponent implements OnInit {
     ['2010', 2000]
   ];
 
+  @Input() title: string;
+
+  @Input() data: Array<Array<number>>;
+
   @ViewChild('googleChart') public googleChartRef: ElementRef;
   public target: string;
+  public targetPrev: string;
   public price: number;
   public grow: number;
   public increase: number;
@@ -54,6 +227,9 @@ export class GraphComponent implements OnInit {
 
   public ngOnInit(): void {
 
+    this.target = this.data[this.data.length - 1][0].toString();
+    this.price = this.data[this.data.length - 1][1];
+
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(this.drawChart.bind(this));
 
@@ -66,20 +242,60 @@ export class GraphComponent implements OnInit {
   }
 
   public drawChart() {
-    const data = new google.visualization.DataTable();
+    let data;
+    try {
+      data = new google.visualization.DataTable();
+    } catch (e) {
+      return;
+    }
     data.addColumn('string', 'time');
     data.addColumn('number', 'price');
     data.addRows(this.data);
 
     const options = {
       selectionMode: 'multiple',
-      curveType: 'function',
       legend: 'none',
+      backgroundColor: 'transparent',
       tooltip: {
         trigger: 'none'
       },
-      chartArea: {width: '100%', height: '80%'},
-      focusTarget: 'category',
+      colors: ['#f5bb5a'],
+      chartArea: {
+        left: '60',
+        width: '100%',
+        height: '80%'
+  },
+      // focusTarget: 'category',
+      hAxis: {
+        textPosition: 'in',
+        // maxTextLines: 4,
+        // minTextSpacing: 100,
+        maxAlternation: 1,
+        slantedText: false,
+        // slantedTextAngle: 0,
+        // showTextEvery: Math.floor(this.data.length / 12) - 1,
+        textStyle: {
+          color: '#2f6763',
+        },
+      },
+      vAxis: {
+        textPosition: 'out',
+        baselineColor: '#002525',
+        gridlines: {
+          color: '#002525'
+        },
+        minorGridlines: {
+          color: '#002525'
+        },
+        textStyle: {
+          color: '#2f6763',
+          bold: true,
+        },
+        // title: 'Price in USD',
+        // titleTextStyle: {
+        //   color: '#d0d8d8'
+        // }
+      },
       crosshair: {
         trigger: 'both',
         orientation: 'vertical'
@@ -87,14 +303,20 @@ export class GraphComponent implements OnInit {
       aggregationTarget: 'auto'
     };
 
-    this.chart = new google.visualization.LineChart(this.googleChartRef.nativeElement);
+    try {
+      this.chart = new google.visualization.LineChart(this.googleChartRef.nativeElement);
+    } catch (e) {
+      return;
+    }
+
     this.chart.draw(data, options);
 
     google.visualization.events.addListener(this.chart, 'onmouseover', (properties) => {
       this.price = this.data[properties.row][1] as number;
-      this.target = this.data[properties.row][0] as string;
+      this.target = (this.data[properties.row][0]).toString() as string;
       this.lastHovered = properties;
       if (this.mousedown) {
+        this.targetPrev = (this.data[this.chart.getSelection()[0].row][0]).toString() as string;
         this.chart.setSelection([this.chart.getSelection()[0], this.lastHovered]);
 
 
@@ -133,13 +355,11 @@ export class GraphComponent implements OnInit {
         this.grow = null;
         this.increase = null;
       }
-
-
     });
 
     google.visualization.events.addListener(this.chart, 'click', (properties) => {
-
     });
+
   }
 
 }

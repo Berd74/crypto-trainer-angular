@@ -4,6 +4,8 @@ import {DefaultComponent} from './components/default/default.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {DecimalPipe} from '@angular/common';
 
 const config = {
   apiKey: 'AIzaSyC_Ogl0SgARhcYEmHK9Fsn5zhcnr5ATOSg',
@@ -23,11 +25,16 @@ const config = {
     // Firebase
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgbModule,
+
   ],
   declarations: [
     // App Components
     DefaultComponent
+  ],
+  providers: [
+    DecimalPipe,
   ],
   exports: [
     FormsModule,
@@ -37,7 +44,9 @@ const config = {
     // Firebase
     AngularFireModule,
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgbModule,
+
   ]
 })
 export class SharedModule {
