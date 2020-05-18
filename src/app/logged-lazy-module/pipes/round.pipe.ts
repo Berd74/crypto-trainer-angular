@@ -8,6 +8,9 @@ export class FloatPipe implements PipeTransform {
   constructor(private decimalPipe: DecimalPipe) {}
 
   transform(value: number): string {
+    if (value === null) {
+      return 'loading';
+    }
     const numberString = value.toString();
     if (numberString.startsWith('0.')) {
       let newString = numberString.substring(2);
@@ -19,7 +22,6 @@ export class FloatPipe implements PipeTransform {
       return value.toFixed(2 + amount);
     } else {
       return value.toFixed(2);
-      // return this.decimalPipe.transform(value, '1.2-2');
     }
   }
 }

@@ -37,8 +37,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let coin of coins">
-          <td>{{ coin.id + 1}}</td>
+        <tr *ngFor="let coin of coins; let i = index;">
+          <td>{{ i + 1}}</td>
           <td>
             <img [src]="coin.thumb" class="mr-2" style="width: 20px">
             {{ coin.symbol }}

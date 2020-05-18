@@ -44,7 +44,6 @@ export class HistoryComponent {
 
     this.angularFireDatabase.database.ref('/users/' + this.firebaseAuthService.user.uid + '/history').once('value').then((snapshot) => {
       const data = snapshot.val();
-      console.log(data);
       const arr = [];
       // tslint:disable-next-line:forin
       for (const prop in data) {
@@ -52,7 +51,6 @@ export class HistoryComponent {
           arr.push(data[prop]);
         }
       }
-      console.log(arr);
       this.history = arr;
       this.loading = false;
     });

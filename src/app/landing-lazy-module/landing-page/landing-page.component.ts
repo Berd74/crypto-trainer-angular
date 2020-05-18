@@ -50,12 +50,9 @@ export class LandingPageComponent implements OnInit {
 
     this.testService.main();
 
-    console.log(this.angularFireDatabase.database);
 
-    this.firebaseAuthService.user.uid
+    this.firebaseAuthService.user.uid;
     this.firebaseAuthService.userStateListener().subscribe((user) => {
-      console.log(user.uid);
-      console.log();
 
       this.angularFireDatabase.database.ref('users/' + user.uid).set({
         email: user.email
@@ -69,7 +66,6 @@ export class LandingPageComponent implements OnInit {
 
         this.angularFireDatabase.database.ref('/users').once('value').then((snapshot) => {
           const data = snapshot.val();
-          console.log(data);
         });
 
       }

@@ -1,1 +1,99 @@
+<div class="container mt-5">
 
+
+  <div class="card">
+
+    <div class="card-header d-flex align-items-center">
+      <h2 class="mb-0">
+        Portfolio
+      </h2>
+    </div>
+
+
+    <div class="card-body text-center d-flex flex-column align-items-center" *ngIf="loading">
+      <img class="loading" [src]="'assets/loading.svg'" alt="loading...">
+      <span style="position: relative; left: 4px">loading...</span>
+    </div>
+
+
+    <div class="card-body" *ngIf="!loading">
+
+      <div class="bigger" *ngIf="myCash">
+        {{myCash+valueOfAllCrypto| float}} <span class="small text-uppercase">USD</span>
+        <span class="smaller">
+            (in cash: {{myCash | float}} <span class="small text-uppercase">USD</span>)
+          </span>
+      </div>
+      <div *ngIf="profit>0">
+
+        <span class="green"><i class="fas fa-arrow-up"></i>
+          {{profit | float}} <span class="small text-uppercase">USD</span></span>
+        since you began investing
+      </div>
+      <div *ngIf="profit<=0">
+
+        <span class="red"><i class="fas fa-arrow-down"></i>
+          Down by
+          {{profit | float}} <span class="small text-uppercase">USD</span></span>
+        since you began investing
+      </div>
+
+      <div class="card mt-4" *ngIf="historyMain.length === 0">
+
+        <div class="card-body text-center d-flex flex-column align-items-center">
+          You don't have any records inside your portfolio.<br>
+          After making a transaction a information will appear here.
+        </div>
+
+      </div>
+
+      <table class="table table-striped mb-0 mt-4" *ngIf="historyMain.length !== 0">
+        <thead>
+        <tr>
+<!--          <th scope="col" width="1">#</th>-->
+          <th scope="col">Symbol</th>
+          <th class="d-none d-lg-table-cell" scope="col">Name</th>
+          <th scope="col">Amount (Crypto)</th>
+          <th class="d-none d-sm-table-cell" scope="col">Current Value</th>
+<!--          <th class="d-none d-lg-table-cell" scope="col">Cost</th>-->
+          <th scope="col">Profit</th>
+          <th scope="col" width="1"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of historyMain; let i = index;">
+<!--          <td>{{ i + 1}}</td>-->
+          <td>{{ item.coinSymbol | uppercase }}</td>
+          <td class="d-none d-lg-table-cell">{{ item.coinName}}</td>
+          <td>{{ item.amount | float}}</td>
+          <td class="d-none d-sm-table-cell">{{ item.currentPrice | float}}</td>
+<!--          <td class="d-none d-lg-table-cell">{{ item.priceWhenBuying | float}}</td>-->
+          <td>
+            <ng-container *ngIf="(item.currentPrice/item.amount - item.averagePrice) / item.averagePrice * 100 > 0">
+            <span class="green">
+              {{ (item.currentPrice/item.amount - item.averagePrice) / item.averagePrice * 100 | float}}%
+            </span>
+            </ng-container>
+            <ng-container *ngIf="(item.currentPrice/item.amount - item.averagePrice) / item.averagePrice * 100<=0">
+            <span class="red">
+              {{ (item.currentPrice/item.amount - item.averagePrice) / item.averagePrice * 100 | float }}%
+            </span>
+            </ng-container>
+          </td>
+          <td>
+            <div class="d-flex">
+
+              <button class="btn btn-sm btn-secondary" [routerLink]="'/portfolio/' + item.coinId">
+                <i class="fas fa-angle-double-right"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

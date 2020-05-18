@@ -17,16 +17,16 @@ export class LoggedCoreComponent {
 
     this.angularFireDatabase.database.ref('/users/' + firebaseAuthService.user.uid + '/cash').once('value').then((snapshot) => {
       const data = snapshot.val();
-      console.log(data);
 
       if (data === null ) {
         this.angularFireDatabase.database.ref('users/' + firebaseAuthService.user.uid).set({
           email: firebaseAuthService.user.email,
-          cash: 0,
+          cash: null,
+          portfolio: {},
           history: {},
         });
         modalService.open(StartModal);
-      } else if (data === 0) {
+      } else if (data.cash === null) {
         modalService.open(StartModal);
       } else {
 

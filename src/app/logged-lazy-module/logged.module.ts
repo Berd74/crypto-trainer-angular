@@ -15,6 +15,8 @@ import {CoinDetailsComponent} from './pages/coin-details/coin-details.component'
 import {StartModal} from './modals/test/start.modal';
 import {BuyModal} from './modals/buy/buy.modal';
 import {FloatPipe} from './pipes/round.pipe';
+import {PortfolioDetailsComponent} from './pages/portfolio-details/portfolio-details.component';
+import {SellModal} from './modals/sell/sell.modal';
 
 @NgModule({
   imports: [
@@ -37,8 +39,10 @@ import {FloatPipe} from './pipes/round.pipe';
     HistoryComponent,
     ListComponent,
     CoinDetailsComponent,
+    PortfolioDetailsComponent,
     // Modals
     StartModal,
+    SellModal,
     BuyModal,
     // Pipies
     FloatPipe

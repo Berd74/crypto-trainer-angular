@@ -32,6 +32,7 @@ export function isLoggedModulePath(urlSegments: UrlSegment[]) {
     'history',
     'list',
     'coin-details',
+    'portfolio',
     'home',
   ];
 

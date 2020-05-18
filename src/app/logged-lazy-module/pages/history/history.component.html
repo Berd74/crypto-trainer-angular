@@ -18,9 +18,16 @@
 
   <div class="card" *ngIf="!loading && history.length === 0">
 
-    <div class="card-body text-center d-flex flex-column align-items-center">
-      You don't have any history records.<br>
-      After making a transaction a information will appear here.
+    <div class="card-body">
+
+      <div class="card">
+
+        <div class="card-body text-center">
+          You don't have any history records.<br>
+          After making a transaction a information will appear here.
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -42,9 +49,9 @@
         </thead>
         <tbody>
         <tr *ngFor="let item of history">
-          <td>{{ item.timestamp | date:'short' }}</td>
+          <td>{{ item.timestamp *1000 | date }}</td>
           <td>
-<!--            <img [src]="item.thumb" class="mr-2" style="width: 20px">-->
+            <!--            <img [src]="item.thumb" class="mr-2" style="width: 20px">-->
             {{ item.action }}
           </td>
           <td>{{ item.coinName}}</td>

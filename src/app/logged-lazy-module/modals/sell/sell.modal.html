@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title">Sell <span class="text-uppercase">{{coinTag}}</span></h4>
+  <!--  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">-->
+  <!--    <i class="fas fa-times"></i>-->
+  <!--  </button>-->
+</div>
+<div class="modal-body" *ngIf="amoutOfCrypto">
+
+
+  <div class="mb-2">
+    <label>Your amount of cryptocurrency:</label>
+    <div class="mt--1" style="word-break: break-word;">{{amoutOfCrypto | float}}</div>
+  </div>
+
+  <div class="mb-2">
+    <label>Cryptocurrency name:</label>
+    <div class="mt--1" style="word-break: break-word;">{{coinName}}</div>
+  </div>
+
+  <div class="mb-2">
+    <label>Value of cryptocurrency:</label>
+    <div class="mt--1" style="word-break: break-word;">{{price}} <span class="small">USD</span></div>
+  </div>
+
+
+
+  <form *ngIf="formGroup" [formGroup]="formGroup" role="form">
+
+    <div class="form-group mt-4">
+      <label for="cash">Enter amount of cryptocurrency which you want to sell:</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fas fa-money-bill-wave"></i>
+          </span>
+        </div>
+        <input id="cash" autofocus class="form-control" formControlName="cash" required type="text">
+      </div>
+    </div>
+
+    <div
+      *ngIf="error"
+      class="errorText text-center">
+      {{error}}
+    </div>
+
+  </form>
+
+  <div class="mb-2">
+    <label>You will get:</label>
+    <div class="mt--1" style="word-break: break-word;">{{amount?amount:0}} <span class="small text-uppercase">USD</span></div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <!--  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>-->
+  <button type="button" class="btn btn-primary" (click)="onOkClick()">Ok</button>
+</div>

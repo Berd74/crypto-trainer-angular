@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {LoggedProvidersModule} from '../logged-providers.module';
 
-interface Coin {
+export interface Coin {
   image: {
     thumb: string;
     small: string;

@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {GetCoinDetailsService} from '../../services/get-coin-details.service';
 import {GetCoinPricesService} from '../../services/get-coin-prices.service';
@@ -6,6 +6,7 @@ import {GraphComponent} from '../../components/graph/graph.component';
 import {timer} from 'rxjs';
 import {BuyModal} from '../../modals/buy/buy.modal';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {CoinInfo} from '../home/home.component';
 
 @Component({
   templateUrl: './coin-details.component.html',
@@ -16,16 +17,7 @@ export class CoinDetailsComponent {
   public coinId: string;
   public prices: Array<Array<number>>;
 
-  public coinInfo: {
-    id: string
-    name: string
-    symbol: string
-    price: number
-    thumb: string
-    description: string
-    high_24h: number
-    low_24h: number
-  };
+  public coinInfo: CoinInfo;
 
   @ViewChild('graph', {static: false}) public graph: GraphComponent;
   loading = true;
@@ -33,6 +25,7 @@ export class CoinDetailsComponent {
 
   constructor(private activatedRoute: ActivatedRoute,
               private modalService: NgbModal,
+              private cdr: ChangeDetectorRef,
               private getCoinPricesService: GetCoinPricesService,
               private getCoinDetailsService: GetCoinDetailsService) {
     // tslint:disable-next-line:radix
@@ -49,7 +42,7 @@ export class CoinDetailsComponent {
         thumb: coinInfo.image.thumb,
         description: coinInfo.description.en,
         high_24h: coinInfo.market_data.high_24h.usd,
-        low_24h: coinInfo.market_data.low_24h.usd,
+        low_24h: coinInfo.market_data.low_24h.usd
       };
       this.getPricesFrom(7);
     });
@@ -67,8 +60,9 @@ export class CoinDetailsComponent {
     this.getCoinPricesService.get(this.coinId, from, to).subscribe((prices) => {
       this.prices = prices;
       this.loading = false;
+      this.cdr.detectChanges();
 
-      timer(100).subscribe(() => {
+      timer(200).subscribe(() => {
         this.graph.drawChart();
       });
     });

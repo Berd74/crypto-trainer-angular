@@ -34,7 +34,7 @@ export class StartModal implements OnInit {
     if (this.formGroup.valid) {
 
       this.angularFireDatabase.database.ref('users/' + this.firebaseAuthService.user.uid + '/cash').set(
-        this.formGroup.value.cash
+        Number(this.formGroup.value.cash)
       );
 
       this.error = null;
